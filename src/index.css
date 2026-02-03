@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Government of India inspired colors */
+    --background: 0 0% 98%;
+    --foreground: 220 15% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
+
+    /* Saffron orange - Indian flag inspired */
+    --primary: 18 95% 60%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Indian green */
+    --secondary: 140 70% 30%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Navy blue for government feel */
+    --accent: 220 80% 25%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 15% 45%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 18 95% 60%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens for government website */
+    --gov-saffron: 18 95% 60%;
+    --gov-green: 140 70% 30%;
+    --gov-navy: 220 80% 25%;
+    --gov-gold: 45 100% 50%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(18 95% 60% / 0.95), hsl(140 70% 30% / 0.95));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 15% 98%));
+    
+    /* Shadows */
+    --shadow-card: 0 2px 8px hsl(220 15% 20% / 0.08);
+    --shadow-hover: 0 8px 24px hsl(220 15% 20% / 0.12);
+    
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 20% 12%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 20% 15%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 20% 15%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 18 95% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 140 70% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 220 80% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 220 20% 20%;
+    --muted-foreground: 220 15% 60%;
+
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 25%;
+    --input: 220 20% 25%;
+    --ring: 18 95% 60%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  .gov-card {
+    @apply bg-card rounded-lg shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-hover)];
+  }
+
+  .gov-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-accent mb-8 pb-4 border-b-4 border-primary inline-block;
+  }
+
+  .nav-link {
+    @apply relative text-foreground hover:text-primary transition-colors duration-300 font-medium;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute left-0 bottom-[-8px] w-0 h-1 bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .image-hover {
+    @apply overflow-hidden rounded-lg transition-transform duration-500 hover:scale-105;
+  }
+}

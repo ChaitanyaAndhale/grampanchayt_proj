@@ -1,0 +1,31 @@
+{
+  "name": "gram-sabha-supabase",
+  "version": "1.0.0",
+  "description": "A project for managing Gram Sabha records using Supabase.",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/gram-sabha-supabase.git"
+  },
+  "keywords": [
+    "supabase",
+    "gram sabha",
+    "records",
+    "admin"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.0.0",
+    "typescript": "^4.0.0",
+    "ts-node": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.0"
+  }
+}

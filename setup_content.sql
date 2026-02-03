@@ -1,0 +1,4 @@
+INSERT INTO site_settings (key, value) VALUES 
+('heritage_desc', 'Golegaon is a thriving village community located in the heart of Maharashtra. Our village has a rich cultural heritage dating back generations, where traditional values blend seamlessly with modern progress. The community is known for its agricultural excellence, producing high-quality crops that contribute to the region''s prosperity.'),
+('community_desc', 'Our village prides itself on strong community bonds and collective growth. With dedicated educational institutions, healthcare facilities, and infrastructure development, Golegaon continues to evolve while preserving its cultural identity. The Gram Panchayat, under the leadership of Sarpanch Mukta Sanjay Andhale, works tirelessly for the welfare of all residents.')
+ON CONFLICT (key) DO NOTHING;
