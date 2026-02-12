@@ -119,20 +119,26 @@ const AnnouncementsManager = () => {
                                     <div className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-bold uppercase tracking-wider">
                                         {item.type}
                                     </div>
-                                    <div className="flex gap-1">
+                                    <div className="flex gap-2">
                                         <Button
-                                            variant="ghost"
+                                            variant="outline"
                                             size="icon"
-                                            className="h-8 w-8"
-                                            onClick={() => handleEdit(item)}
+                                            className="h-8 w-8 hover:bg-blue-50 hover:text-blue-600 border-blue-200"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleEdit(item);
+                                            }}
                                         >
                                             <Edit className="w-4 h-4" />
                                         </Button>
                                         <Button
-                                            variant="ghost"
+                                            variant="outline"
                                             size="icon"
-                                            className="h-8 w-8 text-destructive hover:text-destructive"
-                                            onClick={() => handleDelete(item.id)}
+                                            className="h-8 w-8 text-destructive hover:bg-red-50 hover:text-red-600 border-red-200"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleDelete(item.id);
+                                            }}
                                         >
                                             <Trash2 className="w-4 h-4" />
                                         </Button>
