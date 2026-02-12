@@ -234,167 +234,126 @@ const GramSabhaSection = () => {
                   <p className="text-gray-500 text-lg">No meetings found matching your filters</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-4">
-                  {filteredYears.map((year, index) => (
-                    <motion.div
-                      key={year}
-                      layout
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className={`h-full ${expandedYear === year ? 'col-span-2' : 'col-span-1'}`}
-                    >
-                      <Card className={`h-full border-none shadow-lg overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 relative group ${expandedYear === year ? 'ring-2 ring-primary/20' : ''}`}>
-                        {/* Gradient Border Effect */}
-                        <div className={`absolute inset-0 bg-gradient-to-r from-orange-500 via-emerald-500 to-blue-500 transition-opacity duration-300 rounded-lg ${expandedYear === year ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></div>
-                        <div className="relative bg-white m-[2px] rounded-lg">
-                          <CardHeader className="p-0">
-                            <button
-                              onClick={() =>
-                                setExpandedYear(expandedYear === year ? null : year)
-                              }
-                              className="w-full p-4 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-3 md:gap-4 bg-gradient-to-r from-white to-gray-50 hover:from-orange-50 hover:to-emerald-50 transition-all duration-300"
-                            >
-                              <CardTitle className="flex items-center gap-3 md:gap-4 text-lg md:text-xl text-accent w-full sm:w-auto justify-center sm:justify-start">
-                                <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-2 md:p-3 rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300">
-                                  <Calendar className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                                </div>
-                                <span className="font-bold">Year {year}</span>
-                              </CardTitle>
-                              <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
-                                <span className="bg-gradient-to-br from-primary to-orange-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md whitespace-nowrap">
-                                  {groupedRecords[year].length}{" "}
-                                  {t.gramSabha.meetings}
-                                </span>
-                                <div className="p-2 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 group-hover:from-orange-100 group-hover:to-emerald-100 transition-all duration-300">
-                                  {expandedYear === year ? (
-                                    <ChevronUp className="w-5 h-5 text-accent" />
-                                  ) : (
-                                    <ChevronDown className="w-5 h-5 text-accent" />
-                                  )}
-                                </div>
-                              </div>
-                            </button>
-                          </CardHeader>
-
-                          <AnimatePresence>
-                            {expandedYear === year && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.3 }}
-                              >
-                                <CardContent className="bg-gradient-to-br from-gray-50 to-white p-4 md:p-6 border-t-2 border-gray-100">
-                                  <div className="space-y-4">
-                                    {groupedRecords[year].map((record, index) => {
-                                      const totalMembers = record.membersPresent + record.membersAbsent;
-                                      const attendancePercentage = totalMembers > 0
-                                        ? Math.round((record.membersPresent / totalMembers) * 100)
-                                        : 0;
-                                      const attendanceColor = attendancePercentage >= 75
-                                        ? 'from-green-500 to-green-600'
-                                        : attendancePercentage >= 50
-                                          ? 'from-yellow-500 to-yellow-600'
-                                          : 'from-red-500 to-red-600';
-
-                                      return (
-                                        <motion.div
-                                          key={index}
-                                          initial={{ x: -20, opacity: 0 }}
-                                          animate={{ x: 0, opacity: 1 }}
-                                          transition={{ delay: index * 0.1 }}
-                                          className="bg-white p-4 md:p-5 rounded-xl shadow-md border-2 border-gray-100 hover:border-orange-200 hover:shadow-lg transition-all duration-300 group/card"
-                                        >
-                                          <div className="flex flex-col gap-4">
-                                            {/* Header with Date and Attendance Bar */}
-                                            <div>
-                                              <div className="flex items-center gap-2 mb-3">
-                                                <div className="bg-gradient-to-br from-secondary to-emerald-600 p-2 rounded-lg">
-                                                  <Calendar className="w-4 h-4 text-white" />
-                                                </div>
-                                                <h4 className="font-bold text-gray-800 text-lg">
-                                                  {record.date}
-                                                </h4>
-                                              </div>
-
-                                              {/* Attendance Progress Bar */}
-                                              <div className="mb-3">
-                                                <div className="flex items-center justify-between mb-1">
-                                                  <span className="text-xs font-semibold text-gray-600">Attendance</span>
-                                                  <span className="text-xs font-bold text-gray-800">{attendancePercentage}%</span>
-                                                </div>
-                                                <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
-                                                  <motion.div
-                                                    initial={{ width: 0 }}
-                                                    animate={{ width: `${attendancePercentage}%` }}
-                                                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                                                    className={`h-full bg-gradient-to-r ${attendanceColor} rounded-full`}
-                                                  />
-                                                </div>
-                                              </div>
-
-                                              {/* Agenda */}
-                                              <div className="flex items-start gap-2 text-muted-foreground bg-gray-50 p-3 rounded-lg">
-                                                <FileText className="w-4 h-4 mt-1 shrink-0 text-primary" />
-                                                <p className="text-sm leading-relaxed">
-                                                  {record.remarks}
-                                                </p>
-                                              </div>
-                                            </div>
-
-                                            {/* Members Count */}
-                                            <div className="flex gap-4 pt-3 border-t border-gray-200">
-                                              <div className="flex-1 text-center bg-gradient-to-br from-green-50 to-emerald-50 p-3 rounded-lg hover:shadow-sm transition-shadow">
-                                                <div className="flex items-center justify-center gap-1 text-green-700 font-bold text-xl mb-1">
-                                                  <Users className="w-5 h-5" />
-                                                  {record.membersPresent}
-                                                </div>
-                                                <div className="text-xs text-green-600 font-semibold uppercase tracking-wide">
-                                                  {t.gramSabha.present}
-                                                </div>
-                                              </div>
-                                              <div className="flex-1 text-center bg-gradient-to-br from-gray-50 to-slate-50 p-3 rounded-lg hover:shadow-sm transition-shadow">
-                                                <div className="flex items-center justify-center gap-1 text-gray-600 font-bold text-xl mb-1">
-                                                  <Users className="w-5 h-5" />
-                                                  {record.membersAbsent}
-                                                </div>
-                                                <div className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
-                                                  {t.gramSabha.absent}
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </motion.div>
-                                      );
-                                    })}
-                                  </div>
-                                </CardContent>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
+                {/* Vertical List Layout for Years */ }
+                < div className="flex flex-col gap-3">
+              {filteredYears.map((year, index) => (
+                <motion.div
+                  key={year}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="w-full"
+                >
+                  <Card className={`border shadow-sm overflow-hidden bg-white transition-all duration-300 ${expandedYear === year ? 'ring-1 ring-primary/30 shadow-md' : 'hover:shadow-md'}`}>
+                    <CardHeader className="p-0">
+                      <button
+                        onClick={() =>
+                          setExpandedYear(expandedYear === year ? null : year)
+                        }
+                        className="w-full p-3 md:p-4 flex items-center justify-between gap-3 bg-gradient-to-r from-white to-gray-50 hover:bg-gray-50 transition-colors duration-200"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="bg-orange-100 p-2 rounded-lg">
+                            <Calendar className="w-4 h-4 text-orange-600" />
+                          </div>
+                          <span className="font-bold text-gray-800 text-base md:text-lg">Year {year}</span>
                         </div>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
-        </div>
 
-        <div className="mt-12 text-center">
-          <Button
-            variant="outline"
-            size="lg"
-            className="hover:bg-accent hover:text-white transition-all duration-300"
-          >
-            {t.gramSabha.viewAll}
-          </Button>
-        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="hidden sm:block bg-gray-100 px-3 py-1 rounded-full text-xs font-semibold text-gray-600">
+                            {groupedRecords[year].length} {t.gramSabha.meetings}
+                          </div>
+                          <div className={`p-1.5 rounded-full transition-all duration-200 ${expandedYear === year ? 'bg-orange-100 text-orange-600 rotate-180' : 'bg-gray-100 text-gray-500'}`}>
+                            <ChevronDown className="w-4 h-4" />
+                          </div>
+                        </div>
+                      </button>
+                    </CardHeader>
+
+                    <AnimatePresence>
+                      {expandedYear === year && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <CardContent className="bg-gray-50/50 p-2 md:p-4 border-t border-gray-100">
+                            <div className="space-y-2 md:space-y-3">
+                              {groupedRecords[year].map((record, index) => {
+                                const totalMembers = record.membersPresent + record.membersAbsent;
+                                const attendancePercentage = totalMembers > 0
+                                  ? Math.round((record.membersPresent / totalMembers) * 100)
+                                  : 0;
+
+                                return (
+                                  <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: index * 0.05 }}
+                                    className="bg-white p-3 rounded-lg shadow-sm border border-gray-100"
+                                  >
+                                    <div className="flex flex-col gap-2">
+                                      {/* Compact Header */}
+                                      <div className="flex justify-between items-start">
+                                        <div className="flex items-center gap-2">
+                                          <Calendar className="w-3.5 h-3.5 text-primary" />
+                                          <span className="font-semibold text-sm text-gray-900">{record.date}</span>
+                                        </div>
+                                        <div className="flex items-center gap-1 bg-gray-100 px-2 py-0.5 rounded text-[10px] font-bold text-gray-700">
+                                          <span>{attendancePercentage}%</span>
+                                        </div>
+                                      </div>
+
+                                      {/* Agenda - Compact */}
+                                      <div className="text-xs text-muted-foreground line-clamp-2">
+                                        {record.remarks}
+                                      </div>
+
+                                      {/* Compact Stats Row */}
+                                      <div className="flex gap-2 mt-1">
+                                        <div className="flex-1 bg-green-50 p-1.5 rounded flex items-center justify-center gap-1.5">
+                                          <Users className="w-3 h-3 text-green-600" />
+                                          <span className="text-xs font-bold text-green-700">{record.membersPresent}</span>
+                                          <span className="text-[10px] text-green-600 uppercase">{t.gramSabha.present}</span>
+                                        </div>
+                                        <div className="flex-1 bg-gray-50 p-1.5 rounded flex items-center justify-center gap-1.5">
+                                          <Users className="w-3 h-3 text-gray-500" />
+                                          <span className="text-xs font-bold text-gray-600">{record.membersAbsent}</span>
+                                          <span className="text-[10px] text-gray-500 uppercase">{t.gramSabha.absent}</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                );
+                              })}
+                            </div>
+                          </CardContent>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+              )}
+        </>
+          )}
       </div>
-    </section>
+
+      <div className="mt-12 text-center">
+        <Button
+          variant="outline"
+          size="lg"
+          className="hover:bg-accent hover:text-white transition-all duration-300"
+        >
+          {t.gramSabha.viewAll}
+        </Button>
+      </div>
+    </div>
+    </section >
   );
 };
 

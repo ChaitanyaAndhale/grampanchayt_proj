@@ -57,7 +57,7 @@ const LeadersCarousel = () => {
                         x: {
                             repeat: Infinity,
                             repeatType: "loop",
-                            duration: 25,
+                            duration: 50,
                             ease: "linear",
                         },
                     }}
