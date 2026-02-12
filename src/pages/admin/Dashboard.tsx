@@ -17,11 +17,11 @@ const Dashboard = () => {
     const stats = [
         { name: "Gallery Images", value: "Manage", icon: Image, href: "/admin/gallery", color: "text-blue-600", bg: "bg-blue-100" },
         { name: "Gram Sabha", value: "Records", icon: FileText, href: "/admin/gram-sabha", color: "text-green-600", bg: "bg-green-100" },
-        { name: "Videos", path: "/admin/videos", icon: Video },
-        { name: "Photos", path: "/admin/gallery", icon: Image },
-        { name: "Announcements", path: "/admin/announcements", icon: Megaphone },
-        { name: "Awards", path: "/admin/awards", icon: Award },
-        { name: "Settings", path: "/admin/settings", icon: Settings, href: "/admin/settings", color: "text-orange-600", bg: "bg-orange-100" },
+        { name: "Members", value: "Council", icon: Users, href: "/admin/members", color: "text-purple-600", bg: "bg-purple-100" },
+        { name: "Videos", value: "YouTube", icon: Video, href: "/admin/videos", color: "text-pink-600", bg: "bg-pink-100" },
+        { name: "Announcements", value: "Events", icon: Megaphone, href: "/admin/announcements", color: "text-red-600", bg: "bg-red-100" },
+        { name: "Awards", value: "Honors", icon: Award, href: "/admin/awards", color: "text-yellow-600", bg: "bg-yellow-100" },
+        { name: "Settings", value: "Config", icon: Settings, href: "/admin/settings", color: "text-orange-600", bg: "bg-orange-100" },
     ];
 
     return (
