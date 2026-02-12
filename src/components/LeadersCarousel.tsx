@@ -16,7 +16,7 @@ const LeadersCarousel = () => {
     ];
 
     // Duplicating the list to create a seamless infinite scroll effect
-    const extendedLeaders = [...leaders, ...leaders, ...leaders];
+    const extendedLeaders = [...leaders, ...leaders, ...leaders, ...leaders];
 
     return (
         <div className="relative bg-gradient-to-r from-orange-50/60 via-white to-green-50/60 py-10 overflow-hidden border-y border-gray-200">
@@ -52,12 +52,12 @@ const LeadersCarousel = () => {
 
                 <motion.div
                     className="flex items-center w-full"
-                    animate={{ x: ["0%", "-33.33%"] }}
+                    animate={{ x: ["0%", "-25%"] }}
                     transition={{
                         x: {
                             repeat: Infinity,
                             repeatType: "loop",
-                            duration: 80,
+                            duration: 120,
                             ease: "linear",
                         },
                     }}

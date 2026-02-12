@@ -113,9 +113,9 @@ const Hero = () => {
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-3 bg-white/15 backdrop-blur-lg px-6 md:px-8 py-3 md:py-4 rounded-full border-2 border-white/30 shadow-2xl mb-8 md:mb-16"
+              className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-lg px-4 py-1.5 md:px-6 md:py-2 rounded-full border border-white/30 shadow-xl mb-6 md:mb-10"
             >
-              <span className="text-sm md:text-base font-bold tracking-wider uppercase text-white">{t.hero.welcome}</span>
+              <span className="text-xs md:text-sm font-bold tracking-wider uppercase text-white">{t.hero.welcome}</span>
             </motion.div>
 
             {/* Village name with increased top margin to prevent overlap */}
@@ -123,7 +123,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.7 }}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-4 md:mb-8 leading-tight tracking-tight"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-3 md:mb-6 leading-tight tracking-tight"
             >
               <span className="inline-block text-white drop-shadow-2xl [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)]">
                 {t.hero.villageName}
@@ -135,7 +135,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-base md:text-lg lg:text-xl mb-8 md:mb-12 text-white/95 max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-lg px-4"
+              className="text-sm md:text-lg lg:text-xl mb-6 md:mb-10 text-white/95 max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-lg px-4"
             >
               {settings.village_desc || t.hero.description}
             </motion.p>
@@ -148,16 +148,16 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <motion.div
-                whileHover={{ scale: 1.08, y: -3 }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white text-base md:text-lg px-10 md:px-12 py-7 md:py-8 h-auto w-full sm:w-auto transition-all duration-300 shadow-2xl hover:shadow-primary/30 font-bold rounded-full border-2 border-orange-400/50"
+                  className="bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white text-sm md:text-lg px-8 py-3 md:px-10 md:py-4 h-auto w-full sm:w-auto transition-all duration-300 shadow-xl hover:shadow-primary/30 font-bold rounded-full border border-orange-400/50"
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  {t.hero.contact} <Phone className="ml-3 w-5 h-5 md:w-6 md:h-6" />
+                  {t.hero.contact} <Phone className="ml-2 w-4 h-4 md:w-5 md:h-5" />
                 </Button>
               </motion.div>
             </motion.div>
@@ -168,7 +168,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-10 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 border-t-2 border-white/20 pt-8 md:pt-12"
+            className="mt-8 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 border-t border-white/20 pt-6 md:pt-10"
           >
             {[
               { value: settings.population || "2064", label: t.hero.stats.population, animate: true },
@@ -199,14 +199,14 @@ const StatCard = ({ stat, index }: { stat: { value: string; label: string; anima
   return (
     <motion.div
       ref={ref}
-      whileHover={{ y: -6, scale: 1.05 }}
+      whileHover={{ y: -4, scale: 1.02 }}
       transition={{ type: "spring", stiffness: 400, damping: 15 }}
-      className="p-5 md:p-7 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hover:bg-white/15 hover:shadow-2xl hover:border-white/30 transition-all duration-300 flex flex-col items-center justify-center gap-2"
+      className="p-3 md:p-6 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-lg hover:bg-white/15 hover:shadow-xl hover:border-white/30 transition-all duration-300 flex flex-col items-center justify-center gap-1 md:gap-2"
     >
-      <div className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg leading-none">
+      <div className="text-2xl md:text-4xl font-extrabold text-white drop-shadow-md leading-none">
         {displayValue}
       </div>
-      <div className="text-xs md:text-sm text-white/90 font-semibold uppercase tracking-wide text-center leading-tight mt-1">
+      <div className="text-[10px] md:text-sm text-white/90 font-semibold uppercase tracking-wide text-center leading-tight">
         {stat.label}
       </div>
     </motion.div>
