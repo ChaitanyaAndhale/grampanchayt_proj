@@ -52,12 +52,12 @@ const LeadersCarousel = () => {
 
                 <motion.div
                     className="flex items-center w-full"
-                    animate={{ x: ["0%", "-25%"] }}
+                    animate={{ x: ["0%", "-200%"] }}
                     transition={{
                         x: {
                             repeat: Infinity,
                             repeatType: "loop",
-                            duration: 5,
+                            duration: 20,
                             ease: "linear",
                         },
                     }}
