@@ -19,6 +19,7 @@ export const translations = {
             contact: "Contact Us",
             stats: {
                 population: "Population",
+                families: "Families",
                 established: "Established",
                 area: "Area",
             },
@@ -45,6 +46,17 @@ export const translations = {
             present: "Present",
             absent: "Absent",
             viewAll: "View All Historical Records",
+        },
+        successStories: {
+            badge: "Success Stories",
+            title: "Inspiring Stories of Transformation",
+            description: "The journey of our village development, success and social transformation",
+            readMore: "Read More",
+        },
+        awards: {
+            badge: "Awards & Recognition",
+            title: "Honors and Achievements",
+            description: "Recognition and accolades received for our village development and community initiatives",
         },
         members: {
             title: "Current Gram Panchayat Members",
@@ -74,10 +86,14 @@ export const translations = {
             developedBy: "Developed with",
             by: "by Chaitanya",
         },
+        videos: {
+            title: "Village Updates",
+            subtitle: "Watch the latest announcements and events from our village",
+        },
     },
     mr: {
         header: {
-            title: "ग्राम पंचायत गोलेगाव",
+            title: "ग्राम पंचायत गोळेगाव",
             subtitle: "",
             nav: {
                 home: "मुख्य पृष्ठ",
@@ -89,22 +105,23 @@ export const translations = {
         },
         hero: {
             welcome: "स्वागत आहे",
-            villageName: "गोलेगाव",
+            villageName: "गोळेगाव",
             description: "परंपरेत रुजलेले आणि प्रगतीकडे वाटचाल करणारे एक चैतन्यमय गाव. जिथे वारसा आणि विकास यांचा संगम होतो, अशा ग्रामीण महाराष्ट्राचा अनुभव घ्या.",
             explore: "सेवा एक्सप्लोर करा",
             contact: "संपर्क साधा",
             stats: {
                 population: "लोकसंख्या",
+                families: "कुटुंबे",
                 established: "स्थापना",
                 area: "क्षेत्रफळ",
             },
         },
         village: {
-            title: "आमच्या गावाबद्दल - गोलेगाव",
+            title: "आमच्या गावाबद्दल - गोळेगाव",
             heritageTitle: "आमचा वारसा",
-            heritageDesc: "गोलेगाव हे महाराष्ट्राच्या मध्यभागी वसलेले एक समृद्ध गाव आहे. आमच्या गावाला पिढ्यानपिढ्यांचा समृद्ध सांस्कृतिक वारसा लाभला आहे, जिथे पारंपारिक मूल्ये आधुनिक प्रगतीशी सुसंगत आहेत. हे गाव कृषी उत्कृष्टतेसाठी ओळखले जाते, उच्च-गुणवत्तेची पिके घेऊन क्षेत्राच्या समृद्धीत योगदान देते.",
+            heritageDesc: "गोळेगाव हे महाराष्ट्राच्या मध्यभागी वसलेले एक समृद्ध गाव आहे. आमच्या गावाला पिढ्यानपिढ्यांचा समृद्ध सांस्कृतिक वारसा लाभला आहे, जिथे पारंपारिक मूल्ये आधुनिक प्रगतीशी सुसंगत आहेत. हे गाव कृषी उत्कृष्टतेसाठी ओळखले जाते, उच्च-गुणवत्तेची पिके घेऊन क्षेत्राच्या समृद्धीत योगदान देते.",
             communityTitle: "सामाजिक जीवन",
-            communityDesc: "आमच्या गावाला मजबूत सामाजिक बंध आणि सामूहिक विकासाचा अभिमान आहे. समर्पित शैक्षणिक संस्था, आरोग्य सुविधा आणि पायाभूत सुविधांच्या विकासासह, गोलेगाव आपली सांस्कृतिक ओळख जपत प्रगती करत आहे. ग्रामपंचायत सर्व रहिवाशांच्या कल्याणासाठी अथक परिश्रम करत आहे.",
+            communityDesc: "आमच्या गावाला मजबूत सामाजिक बंध आणि सामूहिक विकासाचा अभिमान आहे. समर्पित शैक्षणिक संस्था, आरोग्य सुविधा आणि पायाभूत सुविधांच्या विकासासह, गोळेगाव आपली सांस्कृतिक ओळख जपत प्रगती करत आहे. ग्रामपंचायत सर्व रहिवाशांच्या कल्याणासाठी अथक परिश्रम करत आहे.",
             stats: {
                 families: "कुटुंबे",
                 population: "लोकसंख्या",
@@ -122,9 +139,20 @@ export const translations = {
             absent: "अनुपस्थित",
             viewAll: "सर्व ऐतिहासिक रेकॉर्ड पहा",
         },
+        successStories: {
+            badge: "यशोगाथा",
+            title: "परिवर्तनाची प्रेरणादायी कहाणी",
+            description: "आमच्या गावाच्या विकासाचा प्रवास, यश आणि सामाजिक परिवर्तनाची कहाणी",
+            readMore: "अधिक वाचा",
+        },
+        awards: {
+            badge: "पुरस्कार आणि सन्मान",
+            title: "सन्मान आणि उपलब्धी",
+            description: "आमच्या गावाच्या विकास आणि सामुदायिक उपक्रमांसाठी मिळालेले पुरस्कार आणि सन्मान",
+        },
         members: {
             title: "विद्यमान ग्रामपंचायत सदस्य",
-            description: "गोलेगाव गावाच्या विकासासाठी आणि कल्याणासाठी एकत्र काम करणाऱ्या आमच्या समर्पित ग्रामपंचायत प्रतिनिधींना भेटा.",
+            description: "गोळेगाव गावाच्या विकासासाठी आणि कल्याणासाठी एकत्र काम करणाऱ्या आमच्या समर्पित ग्रामपंचायत प्रतिनिधींना भेटा.",
             roles: {
                 sarpanch: "सरपंच",
                 upsarpanch: "उपसरपंच",
@@ -142,13 +170,17 @@ export const translations = {
                 gallery: "गॅलरी",
             },
             contactUs: "संपर्क साधा",
-            address: "ग्रामपंचायत कार्यालय, गोलेगाव, महाराष्ट्र, भारत",
+            address: "ग्रामपंचायत कार्यालय, गोळेगाव, महाराष्ट्र, भारत",
             newsletter: "न्यूजलेटर",
             newsletterDesc: "नवीनतम अपडेट्स आणि सूचना मिळवण्यासाठी सबस्क्राईब करा.",
             subscribe: "सबस्क्राईब",
-            copyright: "© २०२४ गोलेगाव ग्रामपंचायत. सर्व हक्क राखीव.",
+            copyright: "© २०२४ गोळेगाव ग्रामपंचायत. सर्व हक्क राखीव.",
             developedBy: "विकसित",
             by: "चैतन्य द्वारे",
+        },
+        videos: {
+            title: "गावातील अपडेट्स",
+            subtitle: "आमच्या गावातील नवीनतम घोषणा आणि कार्यक्रम पहा",
         },
     },
 };

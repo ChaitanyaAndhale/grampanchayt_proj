@@ -57,18 +57,19 @@ const Header = () => {
                 <img
                   src={settings.gram_panchayat_logo}
                   alt="Logo"
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover shadow-lg group-hover:scale-105 transition-transform duration-300"
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500"
                 />
               ) : (
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-                  <span className="text-lg md:text-xl font-bold text-white">GP</span>
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-primary via-orange-500 to-secondary flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
+                  <span className="text-lg md:text-xl font-bold text-white relative z-10">GP</span>
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               )}
               <div className="flex flex-col">
-                <h1 className="text-lg md:text-xl font-bold text-primary leading-tight group-hover:text-secondary transition-colors">
+                <h1 className="text-lg md:text-xl font-bold text-primary leading-tight group-hover:text-secondary transition-all duration-300 gradient-text">
                   {t.header.title}
                 </h1>
-                <p className="text-xs text-muted-foreground hidden sm:block">
+                <p className="text-xs text-muted-foreground hidden sm:block font-medium tracking-wide">
                   {t.header.subtitle}
                 </p>
               </div>
@@ -80,38 +81,70 @@ const Header = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-medium text-gray-700 hover:text-primary transition-colors relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-secondary hover:after:w-full after:transition-all after:duration-300"
+                  className="text-sm font-semibold text-gray-700 hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all after:duration-500 tracking-wide"
                 >
                   {link.name}
                 </a>
               ))}
 
-              <button
+              <motion.button
                 onClick={toggleLanguage}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-all duration-300 border border-gray-200"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-gray-50 to-gray-100 hover:from-primary hover:to-secondary hover:text-white transition-all duration-500 border border-gray-200 hover:border-transparent relative overflow-hidden group shadow-sm hover:shadow-premium"
               >
-                <Globe className="w-4 h-4" />
-                <span className="text-sm font-medium">{language === "en" ? "मराठी" : "English"}</span>
-              </button>
+                <motion.div
+                  initial={false}
+                  animate={{ rotate: language === "en" ? 0 : 180 }}
+                  transition={{ duration: 0.4, type: "spring" }}
+                >
+                  <Globe className="w-4 h-4" />
+                </motion.div>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={language}
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -10, opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="text-sm font-semibold"
+                  >
+                    {language === "en" ? "मराठी" : "English"}
+                  </motion.span>
+                </AnimatePresence>
+              </motion.button>
 
               <button
                 onClick={handleAdminClick}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:shadow-lg hover:scale-105 transition-all duration-300"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-orange-500 to-secondary text-white hover:shadow-premium transition-all duration-500 hover:scale-105 hover:brightness-110 font-semibold shadow-lg"
                 title="Admin Login"
               >
                 <Lock className="w-4 h-4" />
-                <span className="text-sm font-medium">Admin</span>
+                <span className="text-sm">Admin</span>
               </button>
             </nav>
 
             {/* Mobile Menu Button */}
             <div className="flex items-center gap-4 md:hidden">
-              <button
+              <motion.button
                 onClick={toggleLanguage}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 className="p-2 rounded-full bg-gray-100 text-gray-700"
               >
-                <span className="text-sm font-bold">{language === "en" ? "म" : "En"}</span>
-              </button>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={language}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.8, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="text-sm font-bold"
+                  >
+                    {language === "en" ? "म" : "En"}
+                  </motion.span>
+                </AnimatePresence>
+              </motion.button>
               <button
                 onClick={handleAdminClick}
                 className="p-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white"

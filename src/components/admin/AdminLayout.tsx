@@ -6,6 +6,9 @@ import {
     Image,
     Users,
     FileText,
+    Video,
+    Sparkles,
+    Trophy,
     Settings,
     LogOut,
     Menu,
@@ -34,6 +37,9 @@ const AdminLayout = () => {
         { name: "Gallery", href: "/admin/gallery", icon: Image },
         { name: "Gram Sabha", href: "/admin/gram-sabha", icon: FileText },
         { name: "Members", href: "/admin/members", icon: Users },
+        { name: "Videos", href: "/admin/videos", icon: Video },
+        { name: "यशोगाथा", href: "/admin/success-stories", icon: Sparkles },
+        { name: "पुरस्कार", href: "/admin/awards", icon: Trophy },
         { name: "Settings", href: "/admin/settings", icon: Settings },
     ];
 
@@ -73,8 +79,8 @@ const AdminLayout = () => {
                                     to={item.href}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isActive
-                                            ? "bg-primary text-white"
-                                            : "text-gray-700 hover:bg-gray-100"
+                                        ? "bg-primary text-white"
+                                        : "text-gray-700 hover:bg-gray-100"
                                         }`}
                                 >
                                     <Icon className="w-5 h-5" />

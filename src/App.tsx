@@ -14,6 +14,11 @@ import Dashboard from "./pages/admin/Dashboard";
 import GalleryManager from "./pages/admin/GalleryManager";
 import GramSabhaManager from "./pages/admin/GramSabhaManager";
 import MembersManager from "./pages/admin/MembersManager";
+import VideosManager from "./pages/admin/VideosManager";
+import VideosDiagnostic from "./pages/admin/VideosDiagnostic";
+import SuccessStoriesManager from "./pages/admin/SuccessStoriesManager";
+import SuccessStoriesDiagnostic from "./pages/admin/SuccessStoriesDiagnostic";
+import AwardsManager from "./pages/admin/AwardsManager";
 import SettingsManager from "./pages/admin/SettingsManager";
 import NotFound from "./pages/NotFound";
 
@@ -39,6 +44,11 @@ const App = () => (
                 <Route path="gallery" element={<GalleryManager />} />
                 <Route path="gram-sabha" element={<GramSabhaManager />} />
                 <Route path="members" element={<MembersManager />} />
+                <Route path="videos" element={<VideosManager />} />
+                <Route path="videos-diagnostic" element={<VideosDiagnostic />} />
+                <Route path="success-stories" element={<SuccessStoriesManager />} />
+                <Route path="success-stories-diagnostic" element={<SuccessStoriesDiagnostic />} />
+                <Route path="awards" element={<AwardsManager />} />
                 <Route path="settings" element={<SettingsManager />} />
               </Route>
             </Route>

@@ -24,6 +24,7 @@ CREATE POLICY "Allow authenticated delete on site_settings" ON site_settings FOR
 -- 4. Insert Initial Data (Optional)
 INSERT INTO site_settings (key, value) VALUES 
 ('population', '1200+'),
+('families', '300+'),
 ('established_year', '1956'),
 ('area', '850'),
 ('contact_phone', '+91 98765 43210'),
