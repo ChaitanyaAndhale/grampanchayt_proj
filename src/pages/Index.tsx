@@ -16,7 +16,7 @@ const Index = () => {
       <Header />
       <Navigation />
       {/* Content wrapper with padding to account for fixed header */}
-      <div className="pt-32 md:pt-28">
+      <div className="pt-24 md:pt-28">
         <LeadersCarousel />
       </div>
       <Hero />

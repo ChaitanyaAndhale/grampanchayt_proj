@@ -113,7 +113,7 @@ const Hero = () => {
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-3 bg-white/15 backdrop-blur-lg px-6 md:px-8 py-3 md:py-4 rounded-full border-2 border-white/30 shadow-2xl mb-12 md:mb-16"
+              className="inline-flex items-center gap-3 bg-white/15 backdrop-blur-lg px-6 md:px-8 py-3 md:py-4 rounded-full border-2 border-white/30 shadow-2xl mb-8 md:mb-16"
             >
               <span className="text-sm md:text-base font-bold tracking-wider uppercase text-white">{t.hero.welcome}</span>
             </motion.div>
@@ -123,7 +123,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.7 }}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 md:mb-8 leading-tight tracking-tight"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-4 md:mb-8 leading-tight tracking-tight"
             >
               <span className="inline-block text-white drop-shadow-2xl [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)]">
                 {t.hero.villageName}
@@ -135,7 +135,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-base md:text-lg lg:text-xl mb-10 md:mb-12 text-white/95 max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-lg px-4"
+              className="text-base md:text-lg lg:text-xl mb-8 md:mb-12 text-white/95 max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-lg px-4"
             >
               {settings.village_desc || t.hero.description}
             </motion.p>
@@ -168,7 +168,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 border-t-2 border-white/20 pt-10 md:pt-12"
+            className="mt-10 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 border-t-2 border-white/20 pt-8 md:pt-12"
           >
             {[
               { value: settings.population || "2064", label: t.hero.stats.population, animate: true },

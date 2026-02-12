@@ -17,9 +17,18 @@ const Header = () => {
   };
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -124,39 +133,31 @@ const Header = () => {
               </button>
             </nav>
 
-            {/* Mobile Menu Button */}
-            <div className="flex items-center gap-4 md:hidden">
+            {/* Mobile Actions */}
+            <div className="flex items-center gap-2 md:hidden">
               <motion.button
                 onClick={toggleLanguage}
-                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="p-2 rounded-full bg-gray-100 text-gray-700"
+                className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-50 text-gray-700 border border-gray-200 shadow-sm active:bg-gray-100"
               >
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={language}
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.8, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="text-sm font-bold"
-                  >
-                    {language === "en" ? "म" : "En"}
-                  </motion.span>
-                </AnimatePresence>
+                <span className="text-[10px] font-bold leading-none">
+                  {language === "en" ? "म" : "En"}
+                </span>
               </motion.button>
+
               <button
                 onClick={handleAdminClick}
-                className="p-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white"
+                className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary text-white shadow-md active:shadow-sm active:scale-95 transition-all"
                 title="Admin Login"
               >
-                <Lock className="w-4 h-4" />
+                <Lock className="w-3.5 h-3.5" />
               </button>
+
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 text-primary"
+                className="flex items-center justify-center w-8 h-8 text-primary active:scale-95 transition-transform"
               >
-                {isMobileMenuOpen ? <X /> : <Menu />}
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>

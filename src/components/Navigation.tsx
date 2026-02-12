@@ -7,8 +7,15 @@ const Navigation = () => {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 100);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsSticky(window.scrollY > 100);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -33,9 +40,8 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`${
-        isSticky ? "fixed top-0 left-0 right-0 shadow-lg z-50" : "relative"
-      } bg-accent text-white transition-all duration-300`}
+      className={`${isSticky ? "fixed top-0 left-0 right-0 shadow-lg z-50" : "relative"
+        } bg-accent text-white transition-all duration-300`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-14">

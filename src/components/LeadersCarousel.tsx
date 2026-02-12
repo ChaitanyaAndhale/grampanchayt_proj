@@ -15,13 +15,16 @@ const LeadersCarousel = () => {
         { id: 5, name: "Leader", image: "/images/leaders/leade.jpg" },
     ];
 
+    // Duplicating the list to create a seamless infinite scroll effect
+    const extendedLeaders = [...leaders, ...leaders, ...leaders];
+
     return (
-        <div className="relative bg-gradient-to-r from-orange-50/40 via-white to-green-50/40 py-8 overflow-hidden border-y border-gray-200">
+        <div className="relative bg-gradient-to-r from-orange-50/60 via-white to-green-50/60 py-10 overflow-hidden border-y border-gray-200">
             {/* Subtle tri-color overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-orange-50/20 via-gray-50/50 to-green-50/20"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-orange-50/20 via-gray-50/50 to-green-50/20 pointer-events-none"></div>
 
             {/* Subtle geometric background pattern */}
-            <div className="absolute inset-0 opacity-[0.03]">
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                 <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <pattern id="professional-grid" width="60" height="60" patternUnits="userSpaceOnUse">
@@ -33,44 +36,53 @@ const LeadersCarousel = () => {
             </div>
 
             {/* Tri-color accent bar - Indian flag colors */}
-            <div className="absolute top-0 left-0 right-0 h-1 flex shadow-sm">
+            <div className="absolute top-0 left-0 right-0 h-1 flex shadow-sm pointer-events-none z-20">
                 <div className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600"></div>
                 <div className="flex-1 bg-white"></div>
                 <div className="flex-1 bg-gradient-to-r from-green-600 to-green-700"></div>
             </div>
 
-            {/* Subtle decorative elements */}
-            <div className="absolute top-4 left-4 w-16 h-16 border-2 border-orange-200/20 rounded-full"></div>
-            <div className="absolute bottom-4 right-4 w-20 h-20 border-2 border-green-200/20 rounded-full"></div>
-
             <h2 className="sr-only">Leaders</h2>
 
-            {/* Static centered layout with professional frames */}
-            <div className="container mx-auto relative z-10">
-                <div className="flex justify-start md:justify-center items-center gap-3 md:gap-4 px-4 overflow-x-auto pb-4 md:pb-0 scrollbar-hide -mx-4 md:mx-0 px-4 md:px-0">
-                    {leaders.map((leader) => (
-                        <motion.div
-                            key={leader.id}
-                            className="flex flex-col items-center justify-center group flex-shrink-0 first:ml-4 md:first:ml-0 last:mr-4 md:last:mr-0"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            {/* Marquee Container - Constrained Width on Desktop */}
+            <div className="relative w-full max-w-[85rem] mx-auto overflow-hidden z-10">
+                {/* Gradient Masks for fade effect at edges */}
+                <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none"></div>
+
+                <motion.div
+                    className="flex items-center w-full"
+                    animate={{ x: ["0%", "-33.33%"] }}
+                    transition={{
+                        x: {
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            duration: 25,
+                            ease: "linear",
+                        },
+                    }}
+                >
+                    {extendedLeaders.map((leader, index) => (
+                        <div
+                            key={`${leader.id}-${index}`}
+                            className="relative flex-shrink-0 flex justify-center w-[20%] md:w-[10%] px-1 md:px-2 group"
                         >
-                            <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-lg overflow-hidden border-2 border-gray-200 shadow-md bg-white group-hover:border-primary/40 group-hover:shadow-xl transition-all duration-300">
+                            <div className="relative w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-white shadow-md bg-white group-hover:border-primary/60 group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
                                 <img
                                     src={leader.image}
                                     alt={leader.name}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
-                                {/* Professional overlay on hover */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                {/* Glossy Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-tr from-black/5 via-transparent to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full pointer-events-none"></div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </div>
+                </motion.div>
             </div>
 
             {/* Bottom tri-color accent bar */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 flex shadow-sm">
+            <div className="absolute bottom-0 left-0 right-0 h-1 flex shadow-sm pointer-events-none z-20">
                 <div className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600"></div>
                 <div className="flex-1 bg-white"></div>
                 <div className="flex-1 bg-gradient-to-r from-green-600 to-green-700"></div>
