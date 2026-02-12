@@ -19,6 +19,7 @@ import VideosDiagnostic from "./pages/admin/VideosDiagnostic";
 import SuccessStoriesManager from "./pages/admin/SuccessStoriesManager";
 import SuccessStoriesDiagnostic from "./pages/admin/SuccessStoriesDiagnostic";
 import AwardsManager from "./pages/admin/AwardsManager";
+import AnnouncementsManager from "./pages/admin/AnnouncementsManager";
 import SettingsManager from "./pages/admin/SettingsManager";
 import NotFound from "./pages/NotFound";
 
@@ -49,6 +50,7 @@ const App = () => (
                 <Route path="success-stories" element={<SuccessStoriesManager />} />
                 <Route path="success-stories-diagnostic" element={<SuccessStoriesDiagnostic />} />
                 <Route path="awards" element={<AwardsManager />} />
+                <Route path="announcements" element={<AnnouncementsManager />} />
                 <Route path="settings" element={<SettingsManager />} />
               </Route>
             </Route>
