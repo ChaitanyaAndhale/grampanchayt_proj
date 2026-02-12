@@ -168,7 +168,7 @@ const UpcomingEventSection = () => {
                         {activeEvents.map((_, idx) => (
                             <div
                                 key={idx}
-                                className={`w-1.5 h-1.5 rounded-full transition-all ${idx === currentIndex ? 'bg-indigo-600 w-3' : 'bg-gray-300'}`}
+                                className={`w-1.5 h-1.5 rounded-full transition-all ${idx === currentIndex ? 'bg-orange-500 w-3' : 'bg-amber-200'}`}
                             />
                         ))}
                     </div>
