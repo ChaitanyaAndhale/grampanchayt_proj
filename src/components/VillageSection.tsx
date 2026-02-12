@@ -125,7 +125,7 @@ const VillageSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-16"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -137,13 +137,13 @@ const VillageSection = () => {
               whileHover={{ scale: 1.02 }}
               className="group"
             >
-              <Card className="p-4 text-center shadow-md hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
-                <div className={`absolute top-0 right-0 w-16 h-16 ${stat.bg} opacity-20 rounded-bl-full transition-all duration-300 group-hover:w-20 group-hover:h-20`}></div>
-                <div className={`inline-flex p-2.5 rounded-xl ${stat.bg} mb-2 relative z-10`}>
+              <Card className="p-3 md:p-4 text-center shadow-md hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden h-full flex flex-col justify-center items-center">
+                <div className={`absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 ${stat.bg} opacity-20 rounded-bl-full transition-all duration-300 group-hover:w-16 group-hover:h-16 md:group-hover:w-20 md:group-hover:h-20`}></div>
+                <div className={`inline-flex p-2 md:p-2.5 rounded-xl ${stat.bg} mb-2 relative z-10`}>
                   <stat.icon className={`w-5 h-5 md:w-6 md:h-6 ${stat.color}`} />
                 </div>
-                <div className="text-xl md:text-2xl font-bold text-foreground mb-0.5 relative z-10">{stat.value}</div>
-                <div className="text-xs text-muted-foreground font-medium relative z-10">{stat.label}</div>
+                <div className="text-lg md:text-2xl font-bold text-foreground mb-0.5 relative z-10">{stat.value}</div>
+                <div className="text-[10px] md:text-xs text-muted-foreground font-medium relative z-10">{stat.label}</div>
               </Card>
             </motion.div>
           ))}

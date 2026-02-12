@@ -47,11 +47,11 @@ const LeadersCarousel = () => {
 
             {/* Static centered layout with professional frames */}
             <div className="container mx-auto relative z-10">
-                <div className="flex justify-center items-center gap-3 md:gap-4 px-4 flex-wrap">
+                <div className="flex justify-start md:justify-center items-center gap-3 md:gap-4 px-4 overflow-x-auto pb-4 md:pb-0 scrollbar-hide -mx-4 md:mx-0 px-4 md:px-0">
                     {leaders.map((leader) => (
                         <motion.div
                             key={leader.id}
-                            className="flex flex-col items-center justify-center group"
+                            className="flex flex-col items-center justify-center group flex-shrink-0 first:ml-4 md:first:ml-0 last:mr-4 md:last:mr-0"
                             whileHover={{ scale: 1.05, y: -2 }}
                             transition={{ type: "spring", stiffness: 400, damping: 15 }}
                         >

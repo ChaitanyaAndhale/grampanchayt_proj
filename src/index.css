@@ -476,3 +476,13 @@ html {
 .shine-effect:hover::after {
   animation: shine 0.6s;
 }
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

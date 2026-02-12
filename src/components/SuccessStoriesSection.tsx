@@ -93,7 +93,7 @@ const SuccessStoriesSection = () => {
                     </motion.div>
 
                     {/* Success Stories Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
                         {stories.map((story, index) => {
                             // Alternate between orange and green only
                             const colorScheme = categoryColors[index % 2];
@@ -114,32 +114,32 @@ const SuccessStoriesSection = () => {
                                         onClick={() => setSelectedStory(story)}
                                     >
                                         {/* Decorative corner accent */}
-                                        <div className={`absolute top-0 right-0 w-24 h-24 ${colorScheme.icon} opacity-10 rounded-bl-full transition-all duration-300 group-hover:w-32 group-hover:h-32`}></div>
+                                        <div className={`absolute top-0 right-0 w-16 h-16 md:w-24 md:h-24 ${colorScheme.icon} opacity-10 rounded-bl-full transition-all duration-300 group-hover:w-32 group-hover:h-32`}></div>
 
-                                        <CardContent className="p-6 md:p-8 relative z-10">
+                                        <CardContent className="p-3 md:p-8 relative z-10 flex flex-col h-full">
                                             {/* Icon */}
                                             <motion.div
                                                 whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                                                 transition={{ duration: 0.5 }}
-                                                className={`w-14 h-14 md:w-16 md:h-16 ${colorScheme.icon} rounded-2xl flex items-center justify-center mb-5 shadow-lg group-hover:shadow-xl transition-all duration-300`}
+                                                className={`w-10 h-10 md:w-16 md:h-16 ${colorScheme.icon} rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-5 shadow-lg group-hover:shadow-xl transition-all duration-300`}
                                             >
-                                                <IconComponent className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                                                <IconComponent className="w-5 h-5 md:w-8 md:h-8 text-white" />
                                             </motion.div>
 
                                             {/* Title */}
-                                            <h3 className={`text-xl md:text-2xl font-bold mb-4 ${colorScheme.text} group-hover:text-opacity-80 transition-all duration-300 leading-tight`}>
+                                            <h3 className={`text-sm md:text-2xl font-bold mb-1 md:mb-4 ${colorScheme.text} group-hover:text-opacity-80 transition-all duration-300 leading-tight line-clamp-3 md:line-clamp-2`}>
                                                 {title}
                                             </h3>
 
                                             {/* Description - increased visibility */}
-                                            <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-6 line-clamp-5">
+                                            <p className="text-gray-600 text-xs md:text-base leading-relaxed mb-3 md:mb-6 line-clamp-3 md:line-clamp-5 flex-grow">
                                                 {content}
                                             </p>
 
                                             {/* Read More Link */}
-                                            <div className={`flex items-center gap-2 font-semibold ${colorScheme.text} group-hover:gap-3 transition-all duration-300`}>
-                                                <span className="text-sm md:text-base">{t.successStories?.readMore}</span>
-                                                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                                            <div className={`flex items-center gap-1 md:gap-2 font-semibold ${colorScheme.text} group-hover:gap-3 transition-all duration-300 mt-auto`}>
+                                                <span className="text-xs md:text-base">{t.successStories?.readMore}</span>
+                                                <ChevronRight className="w-3 h-3 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                                             </div>
                                         </CardContent>
                                     </Card>
