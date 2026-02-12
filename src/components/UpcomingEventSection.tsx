@@ -50,12 +50,10 @@ const UpcomingEventSection = () => {
 
     if (activeEvents.length === 0) {
         return (
-            <section className="py-12 bg-[#FFFAF0] relative overflow-hidden flex justify-center items-center">
+            <section className="py-4 bg-[#FFFAF0] relative overflow-hidden flex justify-center items-center">
                 <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')] pointer-events-none"></div>
-                <div className="relative rounded-xl border-2 border-orange-200 border-dashed p-8 text-center max-w-md bg-white/50 backdrop-blur-sm">
-                    <Scroll className="w-10 h-10 text-orange-400 mx-auto mb-3 opacity-50" />
-                    <h3 className="text-xl font-bold text-amber-900 font-serif">सध्या कोणतीही घोषणा नाही</h3>
-                    <p className="text-amber-800/70 text-sm mt-1">नवीन अपडेट्ससाठी नंतर तपासा.</p>
+                <div className="relative rounded-lg border border-orange-200 border-dashed p-4 text-center max-w-sm bg-white/50 backdrop-blur-sm">
+                    <h3 className="text-sm font-bold text-amber-900 font-serif">सध्या कोणतीही घोषणा नाही</h3>
                 </div>
             </section>
         );
@@ -67,162 +65,114 @@ const UpcomingEventSection = () => {
     const month = eventDate.toLocaleString('default', { month: 'short' });
 
     return (
-        <section className="py-16 relative overflow-hidden bg-[#FFF8E1]">
+        <section className="py-6 relative overflow-hidden bg-[#FFF8E1]">
             {/* Background Texture - Parchment Paper Vibe */}
             <div className="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')] pointer-events-none mix-blend-multiply"></div>
 
-            {/* Traditional Decorative Top Border (Toran Style Gradient) */}
-            <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-orange-700 via-yellow-500 to-orange-700 shadow-md"></div>
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-orange-200 via-orange-100 to-orange-200"></div>
+            {/* Traditional Decorative Top Border */}
+            <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-orange-700 via-yellow-500 to-orange-700 shadow-sm"></div>
 
-            <div className="container mx-auto px-4 md:px-6 relative z-10">
+            <div className="container mx-auto px-4 relative z-10 transition-all duration-300">
 
-                {/* Heading with Traditional 'Davandi' Sketch Vibe */}
-                <div className="text-center mb-12 relative">
-                    <div className="flex items-center justify-center gap-4 mb-3">
-                        {/* Decorative Line Left */}
-                        <div className="h-[2px] w-12 md:w-32 bg-gradient-to-l from-orange-600 to-transparent rounded-full opacity-60"></div>
-
-                        <div className="relative group cursor-default">
-                            <div className="absolute -inset-2 bg-orange-100 rounded-full blur-md opacity-50 group-hover:opacity-80 transition-opacity"></div>
-                            <span className="relative inline-flex items-center gap-2 py-1.5 px-5 rounded-full bg-gradient-to-br from-orange-50 to-white border border-orange-200 text-orange-800 text-xs font-bold tracking-widest uppercase shadow-sm">
-                                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-                                {t.upcoming?.badge || "नवीनतम घोषणा"}
-                            </span>
-                        </div>
-
-                        {/* Decorative Line Right */}
-                        <div className="h-[2px] w-12 md:w-32 bg-gradient-to-r from-orange-600 to-transparent rounded-full opacity-60"></div>
+                {/* Ultra Compact Heading */}
+                <div className="text-center mb-3 relative">
+                    <div className="flex items-center justify-center gap-2 mb-0.5">
+                        <div className="h-[1px] w-6 bg-orange-400/60 rounded-full"></div>
+                        <span className="inline-flex items-center gap-1 py-px px-1.5 rounded-full bg-gradient-to-br from-orange-50 to-white border border-orange-200 text-orange-800 text-[8px] font-bold tracking-widest uppercase shadow-sm">
+                            <span className="w-1 h-1 rounded-full bg-red-500 animate-pulse"></span>
+                            {t.upcoming?.badge || "नवीनतम"}
+                        </span>
+                        <div className="h-[1px] w-6 bg-orange-400/60 rounded-full"></div>
                     </div>
 
-                    <h2 className="text-4xl md:text-6xl font-black text-[#5D4037] drop-shadow-sm leading-tight font-serif tracking-tight">
+                    <h2 className="text-lg md:text-xl font-black text-[#5D4037] drop-shadow-sm leading-tight font-serif tracking-tight">
                         {t.upcoming?.title || "आगामी कार्यक्रम"}
                     </h2>
-
-                    {/* Decorative Paint Brush Underline */}
-                    <div className="relative w-64 h-3 mx-auto mt-4">
-                        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-red-600 to-orange-500 rounded-full opacity-90" style={{ clipPath: 'polygon(0 45%, 100% 45%, 98% 100%, 2% 100%)' }}></div>
-                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-red-600 rotate-45 rounded-sm"></div>
-                    </div>
                 </div>
 
                 <motion.div
                     key={event.id}
-                    initial={{ opacity: 0, scale: 0.98, y: 10 }}
+                    initial={{ opacity: 0, scale: 0.95, y: 5 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.98, y: -10 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    exit={{ opacity: 0, scale: 0.95, y: -5 }}
+                    transition={{ duration: 0.3 }}
                     onClick={playSound}
-                    className="relative max-w-5xl mx-auto bg-[#FFFAF0] rounded-lg overflow-hidden shadow-[0_20px_60px_-15px_rgba(124,45,18,0.15)] border border-[#E0C09F] cursor-pointer group"
+                    className="relative max-w-lg mx-auto bg-[#FFFAF0] rounded-md overflow-hidden shadow-sm border border-[#E0C09F] cursor-pointer group hover:shadow-md transition-shadow"
                 >
-                    {/* Paper Texture Overlay on Card */}
+                    {/* Paper Texture Overlay */}
                     <div className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] mix-blend-multiply pointer-events-none"></div>
 
-                    {/* Corner Decorations (Mandala style corners) */}
-                    <svg className="absolute top-0 left-0 w-24 h-24 text-orange-300 opacity-60 pointer-events-none z-20" viewBox="0 0 100 100">
+                    {/* Corner Decorations (Tiny) */}
+                    <svg className="absolute top-0 left-0 w-6 h-6 text-orange-300 opacity-60 pointer-events-none z-20" viewBox="0 0 100 100">
                         <path d="M0 0 L100 0 Q50 0 20 20 Q0 50 0 100 Z" fill="currentColor" />
-                        <path d="M5 5 L90 5 Q45 5 20 25 Q5 50 5 90 Z" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="2,2" />
                     </svg>
-                    <svg className="absolute bottom-0 right-0 w-24 h-24 text-orange-300 opacity-60 pointer-events-none z-20 rotate-180" viewBox="0 0 100 100">
+                    <svg className="absolute bottom-0 right-0 w-6 h-6 text-orange-300 opacity-60 pointer-events-none z-20 rotate-180" viewBox="0 0 100 100">
                         <path d="M0 0 L100 0 Q50 0 20 20 Q0 50 0 100 Z" fill="currentColor" />
-                        <path d="M5 5 L90 5 Q45 5 20 25 Q5 50 5 90 Z" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="2,2" />
                     </svg>
 
-                    {/* Content Container */}
-                    <div className="flex flex-col md:flex-row relative z-10">
+                    <div className="flex flex-row relative z-10 h-[80px]">
 
-                        {/* Left Side: Date & Sketch Illustration */}
-                        <div className="md:w-[35%] bg-gradient-to-br from-[#D84315] to-[#BF360C] relative overflow-hidden flex flex-col items-center justify-center p-8 text-center text-white isolate">
-                            {/* Texture Overlay */}
+                        {/* Compact Left Side */}
+                        <div className="w-[20%] bg-gradient-to-br from-[#D84315] to-[#BF360C] flex flex-col items-center justify-center p-1 text-center text-white relative overflow-hidden">
                             <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] mix-blend-overlay"></div>
-                            {/* Mandala Background Pattern */}
-                            <div className="absolute -right-16 -bottom-16 w-64 h-64 border-[30px] border-white/5 rounded-full z-0"></div>
-                            <div className="absolute -left-16 -top-16 w-48 h-48 border-[20px] border-white/5 rounded-full z-0"></div>
 
-                            {/* Davandi / Drum Icon (Sketch Style) */}
-                            <div className="mb-6 relative z-10 group-hover:rotate-12 transition-transform duration-500 ease-out">
-                                <div className="absolute inset-0 bg-yellow-400 blur-2xl opacity-20 rounded-full"></div>
-                                {/* Custom Davandi Icon Composition */}
-                                <div className="relative w-20 h-20 flex items-center justify-center">
-                                    <Volume2 className="w-16 h-16 text-[#FFD54F] drop-shadow-[2px_4px_6px_rgba(0,0,0,0.3)]" strokeWidth={1.5} />
-                                    {/* Sketch marks */}
-                                    <svg className="absolute inset-0 w-full h-full text-white/40 rotate-12" viewBox="0 0 100 100">
-                                        <path d="M10,50 Q50,10 90,50" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4,4" />
-                                        <path d="M10,50 Q50,90 90,50" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4,4" />
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <div className="relative z-10 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-inner w-full max-w-[180px]">
-                                <div className="text-6xl font-black tracking-tighter drop-shadow-lg font-serif">
+                            <div className="relative z-10 bg-white/10 backdrop-blur-sm border border-white/20 px-1.5 py-0.5 rounded shadow-inner">
+                                <div className="text-lg font-black font-serif leading-none">
                                     {day}
                                 </div>
-                                <div className="text-sm font-bold text-orange-100 uppercase tracking-[0.2em] border-t border-white/20 pt-2 mt-1">
+                                <div className="text-[7px] font-bold text-orange-100 uppercase tracking-widest pt-px border-t border-white/20 mt-px">
                                     {month}
                                 </div>
                             </div>
                         </div>
 
-                        {/* Right Side: Details */}
-                        <div className="md:w-[65%] p-8 md:p-10 flex flex-col justify-center relative">
-                            {/* Decorative Brush Stroke Bg */}
-                            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl pointer-events-none"></div>
-
-                            <div className="mb-5">
-                                <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-                                    <span className="inline-flex items-center px-3 py-1 bg-[#FFF3E0] text-[#E65100] text-xs font-bold uppercase tracking-wider rounded border border-orange-200">
-                                        <Bell className="w-3 h-3 mr-1.5" />
+                        {/* Compact Right Side */}
+                        <div className="w-[80%] p-2 pl-3 flex flex-col justify-center bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]">
+                            <div className="flex justify-between items-start mb-0.5">
+                                <div className="flex-1 min-w-0 mr-2">
+                                    <h3 className="text-sm font-bold text-[#3E2723] group-hover:text-[#BF360C] transition-colors font-serif leading-tight truncate">
+                                        {event.title}
+                                    </h3>
+                                    <span className="inline-block text-[#E65100] text-[8px] font-bold uppercase tracking-wider mb-0.5 opacity-80">
                                         {event.type || 'जाहीर सूचना'}
                                     </span>
+                                </div>
 
-                                    {/* Desktop Nav Arrows */}
+                                <div className="flex gap-1 shrink-0 items-center">
                                     {activeEvents.length > 1 && (
-                                        <div className="hidden md:flex gap-2">
-                                            <button onClick={prevSlide} className="w-8 h-8 rounded-full border border-orange-200 flex items-center justify-center text-orange-800 hover:bg-orange-100 transition-colors">
-                                                <ChevronLeft className="w-4 h-4" />
+                                        <div className="hidden sm:flex gap-1 mr-2">
+                                            <button onClick={prevSlide} className="w-4 h-4 rounded-full border border-orange-200 flex items-center justify-center text-orange-800 hover:bg-orange-100">
+                                                <ChevronLeft className="w-2.5 h-2.5" />
                                             </button>
-                                            <button onClick={nextSlide} className="w-8 h-8 rounded-full border border-orange-200 flex items-center justify-center text-orange-800 hover:bg-orange-100 transition-colors">
-                                                <ChevronRight className="w-4 h-4" />
+                                            <button onClick={nextSlide} className="w-4 h-4 rounded-full border border-orange-200 flex items-center justify-center text-orange-800 hover:bg-orange-100">
+                                                <ChevronRight className="w-2.5 h-2.5" />
                                             </button>
                                         </div>
                                     )}
+                                    <button className="bg-[#BF360C] text-white px-2 py-1 rounded shadow hover:shadow-md transition-all flex items-center gap-1 text-[9px] font-bold hover:bg-[#D84315]">
+                                        <span>{t.upcoming?.cta || "पहा"}</span>
+                                        <ArrowRight className="w-2 h-2" />
+                                    </button>
                                 </div>
-                                <h3 className="text-2xl md:text-4xl font-black text-[#3E2723] group-hover:text-[#BF360C] transition-colors leading-tight font-serif">
-                                    {event.title}
-                                </h3>
                             </div>
 
-                            {/* Divider */}
-                            <div className="w-full h-px bg-gradient-to-r from-orange-200 via-orange-300 to-transparent mb-5"></div>
-
-                            <p className="text-[#5D4037] text-base md:text-lg leading-relaxed mb-8 font-medium line-clamp-3">
+                            <p className="text-[#5D4037] text-[10px] leading-snug mb-1 line-clamp-2 opacity-90">
                                 {event.description}
                             </p>
 
-                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mt-auto">
-                                <div className="flex flex-col gap-2 text-sm text-[#795548] font-medium w-full sm:w-auto">
-                                    {event.event_time && (
-                                        <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-orange-50/50 transition-colors">
-                                            <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center shrink-0">
-                                                <Clock className="w-4 h-4 text-orange-700" />
-                                            </div>
-                                            <span>{event.event_time}</span>
-                                        </div>
-                                    )}
-                                    {event.location && (
-                                        <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-orange-50/50 transition-colors">
-                                            <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center shrink-0">
-                                                <MapPin className="w-4 h-4 text-orange-700" />
-                                            </div>
-                                            <span className="truncate max-w-[200px]">{event.location}</span>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <button className="w-full sm:w-auto relative overflow-hidden bg-[#BF360C] text-white px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all group/btn flex items-center justify-center gap-2 font-bold tracking-wide text-sm border-b-4 border-[#870000] active:translate-y-0.5 active:border-b-0 hover:bg-[#D84315]">
-                                    <span className="relative z-10">{t.upcoming?.cta || "सविस्तर माहिती"}</span>
-                                    <ArrowRight className="w-4 h-4 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
-                                </button>
+                            <div className="flex items-center gap-2 text-[9px] text-[#795548] font-medium border-t border-orange-200/50 pt-1 mt-auto">
+                                {event.event_time && (
+                                    <div className="flex items-center gap-1">
+                                        <Clock className="w-2 h-2 text-orange-700" />
+                                        <span>{event.event_time}</span>
+                                    </div>
+                                )}
+                                {event.location && (
+                                    <div className="flex items-center gap-1 truncate max-w-[100px]">
+                                        <MapPin className="w-2 h-2 text-orange-700 flex-shrink-0" />
+                                        <span className="truncate">{event.location}</span>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -230,11 +180,11 @@ const UpcomingEventSection = () => {
 
                 {/* Mobile Navigation Dots */}
                 {activeEvents.length > 1 && (
-                    <div className="flex justify-center gap-2 mt-8 md:hidden">
+                    <div className="flex justify-center gap-1 mt-2 sm:hidden">
                         {activeEvents.map((_, idx) => (
                             <div
                                 key={idx}
-                                className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-[#BF360C] w-8' : 'bg-orange-200 w-2'}`}
+                                className={`h-1 rounded-full transition-all ${idx === currentIndex ? 'bg-[#BF360C] w-3' : 'bg-orange-200 w-1'}`}
                             />
                         ))}
                     </div>
