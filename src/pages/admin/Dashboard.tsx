@@ -1,13 +1,27 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Image, Users, FileText, Settings } from "lucide-react";
+import {
+    Users,
+    FileText,
+    Settings,
+    LogOut,
+    LayoutDashboard,
+    Video,
+    Image,
+    Award,
+    Trophy,
+    Megaphone
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
     const stats = [
         { name: "Gallery Images", value: "Manage", icon: Image, href: "/admin/gallery", color: "text-blue-600", bg: "bg-blue-100" },
         { name: "Gram Sabha", value: "Records", icon: FileText, href: "/admin/gram-sabha", color: "text-green-600", bg: "bg-green-100" },
-        { name: "Members", value: "Council", icon: Users, href: "/admin/members", color: "text-purple-600", bg: "bg-purple-100" },
-        { name: "Settings", value: "Config", icon: Settings, href: "/admin/settings", color: "text-orange-600", bg: "bg-orange-100" },
+        { name: "Videos", path: "/admin/videos", icon: Video },
+        { name: "Photos", path: "/admin/gallery", icon: Image },
+        { name: "Announcements", path: "/admin/announcements", icon: Megaphone },
+        { name: "Awards", path: "/admin/awards", icon: Award },
+        { name: "Settings", path: "/admin/settings", icon: Settings, href: "/admin/settings", color: "text-orange-600", bg: "bg-orange-100" },
     ];
 
     return (
