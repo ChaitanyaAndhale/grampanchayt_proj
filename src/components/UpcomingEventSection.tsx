@@ -72,6 +72,16 @@ const UpcomingEventSection = () => {
         <section className="py-8 bg-white relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
 
+                <div className="text-center mb-8">
+                    <span className="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-xs font-bold tracking-wider mb-2 border border-orange-200">
+                        {t.upcoming?.badge || "नवीनतम"}
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-bold text-amber-950">
+                        {t.upcoming?.title || "आगामी कार्यक्रम आणि घोषणा"}
+                    </h2>
+                    <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-amber-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
                 <motion.div
                     key={event.id}
                     initial={{ opacity: 0, y: 15 }}
