@@ -113,7 +113,11 @@ const AnnouncementsManager = () => {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {announcements.map((item) => (
-                        <Card key={item.id} className={`overflow-hidden border-l-4 ${item.is_active ? 'border-l-green-500' : 'border-l-gray-300'}`}>
+                        <Card
+                            key={item.id}
+                            className={`overflow-hidden border-l-4 cursor-pointer hover:shadow-md transition-shadow active:scale-95 duration-200 ${item.is_active ? 'border-l-green-500' : 'border-l-gray-300'}`}
+                            onClick={() => handleEdit(item)}
+                        >
                             <CardHeader className="pb-2">
                                 <div className="flex justify-between items-start">
                                     <div className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-bold uppercase tracking-wider">
@@ -123,18 +127,7 @@ const AnnouncementsManager = () => {
                                         <Button
                                             variant="outline"
                                             size="icon"
-                                            className="h-8 w-8 hover:bg-blue-50 hover:text-blue-600 border-blue-200"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                handleEdit(item);
-                                            }}
-                                        >
-                                            <Edit className="w-4 h-4" />
-                                        </Button>
-                                        <Button
-                                            variant="outline"
-                                            size="icon"
-                                            className="h-8 w-8 text-destructive hover:bg-red-50 hover:text-red-600 border-red-200"
+                                            className="h-8 w-8 text-destructive hover:bg-red-50 hover:text-red-600 border-red-200 z-10"
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 handleDelete(item.id);
