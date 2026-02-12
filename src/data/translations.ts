@@ -96,6 +96,7 @@ export const translations = {
             date: "Date",
             location: "Location",
             cta: "More Info",
+            new: "New",
         },
     },
     mr: {
@@ -195,6 +196,7 @@ export const translations = {
             date: "दिनांक",
             location: "स्थळ",
             cta: "अधिक माहिती",
+            new: "नवीन",
         }
     },
 };
