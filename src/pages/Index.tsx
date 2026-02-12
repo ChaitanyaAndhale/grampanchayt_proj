@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import LeadersCarousel from "../components/LeadersCarousel";
 import Hero from "../components/Hero";
 import VillageSection from "../components/VillageSection";
+import GoogleEarthSection from "../components/GoogleEarthSection";
 import GramSabhaSection from "../components/GramSabhaSection";
 import VideosSection from "../components/VideosSection";
 import SuccessStoriesSection from "../components/SuccessStoriesSection";
@@ -31,6 +32,9 @@ const Index = () => {
       </div>
 
       <VillageSection />
+
+      {/* Google Earth Integration */}
+      <GoogleEarthSection />
 
       {/* Decorative Gradient Separator */}
       <div className="h-24 bg-gradient-to-b from-white via-blue-50/20 to-slate-50/30 relative overflow-hidden">
