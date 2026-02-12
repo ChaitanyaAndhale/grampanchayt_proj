@@ -90,6 +90,13 @@ export const translations = {
             title: "Village Updates",
             subtitle: "Watch the latest announcements and events from our village",
         },
+        upcoming: {
+            badge: "Next Event",
+            title: "Upcoming Programs & Announcements",
+            date: "Date",
+            location: "Location",
+            cta: "More Info",
+        },
     },
     mr: {
         header: {
@@ -182,5 +189,12 @@ export const translations = {
             title: "गावातील अपडेट्स",
             subtitle: "आमच्या गावातील नवीनतम घोषणा आणि कार्यक्रम पहा",
         },
+        upcoming: {
+            badge: "पुढील उपक्रम",
+            title: "आगामी कार्यक्रम आणि घोषणा",
+            date: "दिनांक",
+            location: "स्थळ",
+            cta: "अधिक माहिती",
+        }
     },
 };

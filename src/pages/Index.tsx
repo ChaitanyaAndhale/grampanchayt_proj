@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import LeadersCarousel from "../components/LeadersCarousel";
 import Hero from "../components/Hero";
+import UpcomingEventSection from "../components/UpcomingEventSection";
 import VillageSection from "../components/VillageSection";
 import GoogleEarthSection from "../components/GoogleEarthSection";
 import GramSabhaSection from "../components/GramSabhaSection";
@@ -21,6 +22,9 @@ const Index = () => {
         <LeadersCarousel />
       </div>
       <Hero />
+
+      {/* Upcoming Events - Priority Announcement */}
+      <UpcomingEventSection />
 
       {/* Decorative Wave Separator */}
       <div className="relative h-16 bg-gradient-to-b from-primary/5 to-transparent">
