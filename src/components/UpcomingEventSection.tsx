@@ -62,6 +62,24 @@ const UpcomingEventSection = () => {
         setIsModalOpen(true);
     };
 
+    // Swipe logic
+    const swipeConfidenceThreshold = 10000;
+    const swipePower = (offset: number, velocity: number) => {
+        return Math.abs(offset) * velocity;
+    };
+
+    const handleDragEnd = (e: any, { offset, velocity }: any) => {
+        const swipe = swipePower(offset.x, velocity.x);
+
+        if (swipe < -swipeConfidenceThreshold) {
+            // Swiped Left -> Next
+            setCurrentIndex((prev) => (prev + 1) % activeEvents.length);
+        } else if (swipe > swipeConfidenceThreshold) {
+            // Swiped Right -> Prev
+            setCurrentIndex((prev) => (prev - 1 + activeEvents.length) % activeEvents.length);
+        }
+    };
+
     if (activeEvents.length === 0) {
         return (
             <section className="py-6 bg-[#FFFAF0] relative overflow-hidden flex justify-center items-center">
@@ -122,12 +140,16 @@ const UpcomingEventSection = () => {
 
                     <motion.div
                         key={event.id}
-                        initial={{ opacity: 0, scale: 0.98, y: 5 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.98, y: -5 }}
+                        initial={{ opacity: 0, scale: 0.98, x: 20 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        exit={{ opacity: 0, scale: 0.98, x: -20 }}
                         transition={{ duration: 0.3 }}
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={1}
+                        onDragEnd={handleDragEnd}
                         onClick={playSound}
-                        className="relative w-full max-w-2xl bg-[#FFFAF0] rounded-lg overflow-hidden shadow-md border border-[#E0C09F] cursor-pointer group hover:shadow-lg transition-shadow"
+                        className="relative w-full max-w-2xl bg-[#FFFAF0] rounded-lg overflow-hidden shadow-md border border-[#E0C09F] cursor-pointer group hover:shadow-lg transition-shadow touch-pan-y"
                     >
                         {/* Paper Texture Overlay */}
                         <div className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] mix-blend-multiply pointer-events-none"></div>
