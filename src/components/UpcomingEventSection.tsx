@@ -49,7 +49,19 @@ const UpcomingEventSection = () => {
         setCurrentIndex((prev) => (prev - 1 + activeEvents.length) % activeEvents.length);
     };
 
-    if (activeEvents.length === 0) return null;
+    if (activeEvents.length === 0) {
+        return (
+            <section className="py-6 bg-white relative overflow-hidden">
+                <div className="container mx-auto px-4 md:px-6">
+                    <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-slate-100 to-slate-200 border border-slate-300 p-8 text-center shadow-sm">
+                        <Bell className="w-8 h-8 text-slate-400 mx-auto mb-2" />
+                        <h3 className="text-lg font-bold text-slate-600">No Upcoming Events</h3>
+                        <p className="text-slate-500 text-sm">Check back later for new announcements.</p>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     const event = activeEvents[currentIndex];
     const eventDate = new Date(event.event_date);
