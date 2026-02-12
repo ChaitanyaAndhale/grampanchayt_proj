@@ -323,7 +323,7 @@ const VillageSection = () => {
               </button>
             </div>
 
-            {/* Navigation Buttons - Centered Vertically */}
+            {/* Navigation Buttons - Simple and Unobtrusive */}
             {images.length > 1 && (
               <>
                 <button
@@ -331,10 +331,10 @@ const VillageSection = () => {
                     e.stopPropagation();
                     prevImage();
                   }}
-                  className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-black/20 hover:bg-white/10 backdrop-blur-sm text-white rounded-full p-3 md:p-4 transition-all duration-300 border border-white/10 hover:border-white/30 group hover:scale-110 active:scale-95"
+                  className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/10 hover:bg-black/30 text-white/70 hover:text-white rounded-full p-2 transition-all duration-200 hover:scale-110 active:scale-95"
                   aria-label="Previous Image"
                 >
-                  <ChevronLeft className="w-8 h-8 md:w-10 md:h-10 group-hover:-translate-x-1 transition-transform" />
+                  <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
                 </button>
 
                 <button
@@ -342,17 +342,17 @@ const VillageSection = () => {
                     e.stopPropagation();
                     nextImage();
                   }}
-                  className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-black/20 hover:bg-white/10 backdrop-blur-sm text-white rounded-full p-3 md:p-4 transition-all duration-300 border border-white/10 hover:border-white/30 group hover:scale-110 active:scale-95"
+                  className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/10 hover:bg-black/30 text-white/70 hover:text-white rounded-full p-2 transition-all duration-200 hover:scale-110 active:scale-95"
                   aria-label="Next Image"
                 >
-                  <ChevronRight className="w-8 h-8 md:w-10 md:h-10 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
                 </button>
               </>
             )}
 
             {/* Main Image Container */}
             <div
-              className="relative w-full h-full flex items-center justify-center p-4 md:p-12"
+              className="relative w-full h-full flex items-center justify-center p-2 md:p-12"
               onClick={(e) => e.stopPropagation()}
             >
               <AnimatePresence mode="wait">
