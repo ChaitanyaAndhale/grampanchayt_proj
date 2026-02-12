@@ -2,7 +2,7 @@ export const translations = {
     en: {
         header: {
             title: "Gram Panchayat Golegaon",
-            subtitle: "",
+            subtitle: "Journey towards Prosperity",
             nav: {
                 home: "Home",
                 about: "About",
@@ -94,7 +94,7 @@ export const translations = {
     mr: {
         header: {
             title: "गोळेगाव ग्रामपंचायत",
-            subtitle: "",
+            subtitle: "समृद्धिकडे वाटचाल",
             nav: {
                 home: "मुख्य पृष्ठ",
                 about: "आमच्याबद्दल",

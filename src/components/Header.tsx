@@ -78,7 +78,7 @@ const Header = () => {
                 <h1 className="text-lg md:text-xl font-bold text-primary leading-tight group-hover:text-secondary transition-all duration-300 gradient-text">
                   {t.header.title}
                 </h1>
-                <p className="text-xs text-muted-foreground hidden sm:block font-medium tracking-wide">
+                <p className="text-[10px] md:text-xs text-muted-foreground font-medium tracking-wide">
                   {t.header.subtitle}
                 </p>
               </div>
