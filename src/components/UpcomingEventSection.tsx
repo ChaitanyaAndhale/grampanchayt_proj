@@ -53,10 +53,10 @@ const UpcomingEventSection = () => {
         return (
             <section className="py-6 bg-white relative overflow-hidden">
                 <div className="container mx-auto px-4 md:px-6">
-                    <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-slate-100 to-slate-200 border border-slate-300 p-8 text-center shadow-sm">
-                        <Bell className="w-8 h-8 text-slate-400 mx-auto mb-2" />
-                        <h3 className="text-lg font-bold text-slate-600">No Upcoming Events</h3>
-                        <p className="text-slate-500 text-sm">Check back later for new announcements.</p>
+                    <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 p-8 text-center shadow-sm">
+                        <Bell className="w-8 h-8 text-orange-400 mx-auto mb-2" />
+                        <h3 className="text-lg font-bold text-amber-900">No Upcoming Events</h3>
+                        <p className="text-amber-700 text-sm">Check back later for new announcements.</p>
                     </div>
                 </div>
             </section>
@@ -69,58 +69,57 @@ const UpcomingEventSection = () => {
     const month = eventDate.toLocaleString('default', { month: 'short' });
 
     return (
-        <section className="py-6 bg-white relative overflow-hidden">
+        <section className="py-8 bg-white relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
+
                 <motion.div
                     key={event.id}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
+                    exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.4 }}
                     onClick={playSound}
-                    className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 shadow-xl border border-indigo-500/30 cursor-pointer group hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-300"
+                    className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-amber-50 via-white to-orange-50 shadow-xl shadow-orange-900/5 border border-amber-200/60 cursor-pointer group hover:shadow-2xl hover:shadow-orange-900/10 transition-all duration-300 hover:-translate-y-0.5"
                 >
-                    {/* Compact Background Patterns */}
-                    <div className="absolute inset-0">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
-                        <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                    </div>
+                    {/* Golden Shine Effect */}
+                    <div className="absolute inset-0 opacity-30 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.5)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] group-hover:bg-[position:200%_0,0_0] transition-[background-position] duration-[1500ms]"></div>
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-300 via-orange-500 to-amber-300 opacity-80"></div>
 
                     <div className="relative z-10 flex flex-col sm:flex-row items-stretch min-h-[140px]">
 
-                        {/* Left Side: Date Compact */}
-                        <div className="bg-white/5 backdrop-blur-sm p-4 sm:w-28 flex flex-col items-center justify-center border-b sm:border-b-0 sm:border-r border-white/10 text-center shrink-0">
-                            <div className="inline-flex items-center gap-1 bg-orange-500/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-2 shadow-sm animate-pulse">
-                                <Bell className="w-2.5 h-2.5" />
-                                <span className="uppercase tracking-wide">New</span>
+                        {/* Left Side: Date - Shine Orange */}
+                        <div className="bg-gradient-to-br from-orange-500 to-amber-600 p-5 sm:w-32 flex flex-col items-center justify-center text-center shrink-0 relative overflow-hidden">
+                            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+
+                            <div className="relative z-10 inline-flex items-center gap-1 bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-2 shadow-sm border border-white/20">
+                                <Bell className="w-3 h-3" />
+                                <span className="uppercase tracking-wide">{t.upcoming?.new || "नवीन"}</span>
                             </div>
 
-                            <div className="text-3xl font-black text-white leading-none tracking-tighter">
+                            <div className="relative z-10 text-4xl font-black text-white leading-none tracking-tight shadow-sm">
                                 {day}
                             </div>
-                            <div className="text-xs font-bold text-indigo-200 uppercase tracking-widest mb-1">
+                            <div className="relative z-10 text-xs font-bold text-orange-100 uppercase tracking-widest mt-1">
                                 {month}
                             </div>
-
-                            {event.event_time && (
-                                <div className="mt-1 flex items-center gap-1 text-[10px] text-gray-300 bg-black/20 px-2 py-0.5 rounded opacity-80">
-                                    <Clock className="w-2.5 h-2.5" />
-                                    <span>{event.event_time}</span>
-                                </div>
-                            )}
                         </div>
 
-                        {/* Right Side: Details Compact */}
-                        <div className="p-4 sm:p-6 flex-grow flex flex-col justify-center">
+                        {/* Right Side: Details - Silent Gold */}
+                        <div className="p-5 sm:p-6 flex-grow flex flex-col justify-center">
                             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-2">
                                 <div>
-                                    <div className="flex items-center gap-2 mb-1">
-                                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/30 px-2 py-0.5 rounded border border-emerald-500/20">
+                                    <div className="flex items-center gap-2 mb-1.5">
+                                        <span className="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-100/50 px-2 py-0.5 rounded border border-amber-200/50">
                                             {event.type || 'Announcement'}
                                         </span>
+                                        {event.event_time && (
+                                            <div className="flex items-center gap-1 text-[10px] font-medium text-amber-800/60">
+                                                <Clock className="w-3 h-3 text-orange-400" />
+                                                <span>{event.event_time}</span>
+                                            </div>
+                                        )}
                                     </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-white leading-snug group-hover:text-indigo-200 transition-colors">
+                                    <h3 className="text-lg sm:text-xl font-bold text-amber-950 leading-snug group-hover:text-orange-700 transition-colors">
                                         {event.title}
                                     </h3>
                                 </div>
@@ -128,10 +127,10 @@ const UpcomingEventSection = () => {
                                 <div className="hidden sm:flex gap-1 shrink-0">
                                     {activeEvents.length > 1 && (
                                         <>
-                                            <button onClick={prevSlide} className="w-7 h-7 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/20 text-white transition-colors border border-white/10">
+                                            <button onClick={prevSlide} className="w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-orange-50 text-amber-700 border border-amber-200/50 shadow-sm transition-all">
                                                 <ChevronLeft className="w-4 h-4" />
                                             </button>
-                                            <button onClick={nextSlide} className="w-7 h-7 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/20 text-white transition-colors border border-white/10">
+                                            <button onClick={nextSlide} className="w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-orange-50 text-amber-700 border border-amber-200/50 shadow-sm transition-all">
                                                 <ChevronRight className="w-4 h-4" />
                                             </button>
                                         </>
@@ -139,23 +138,23 @@ const UpcomingEventSection = () => {
                                 </div>
                             </div>
 
-                            <p className="text-indigo-100/80 text-xs sm:text-sm line-clamp-2 leading-relaxed mb-3 max-w-3xl">
+                            <p className="text-amber-900/80 text-sm line-clamp-2 leading-relaxed mb-4 max-w-3xl border-l-2 border-amber-200 pl-3">
                                 {event.description}
                             </p>
 
-                            <div className="flex items-center justify-between pt-3 border-t border-white/5 mt-auto">
-                                <div className="flex items-center gap-2 text-gray-400 text-xs truncate max-w-[60%]">
+                            <div className="flex items-center justify-between pt-3 border-t border-amber-100/50 mt-auto">
+                                <div className="flex items-center gap-2 text-amber-800/60 text-xs truncate max-w-[60%]">
                                     {event.location && (
                                         <>
-                                            <MapPin className="w-3 h-3 text-orange-400 shrink-0" />
-                                            <span className="truncate">{event.location}</span>
+                                            <MapPin className="w-3.5 h-3.5 text-orange-500 shrink-0" />
+                                            <span className="truncate font-medium text-amber-900/70">{event.location}</span>
                                         </>
                                     )}
                                 </div>
 
-                                <button className="flex items-center gap-1.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 px-4 py-1.5 rounded-full transition-all border border-white/10 hover:border-white/30 hover:scale-105 active:scale-95">
-                                    <span>Details</span>
-                                    <ArrowRight className="w-3 h-3" />
+                                <button className="flex items-center gap-1.5 text-xs font-bold text-orange-700 bg-orange-50 hover:bg-orange-100 px-4 py-2 rounded-lg transition-all border border-orange-200/50 group/btn">
+                                    <span>{t.upcoming?.cta || "अधिक माहिती"}</span>
+                                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
                                 </button>
                             </div>
                         </div>
@@ -164,7 +163,7 @@ const UpcomingEventSection = () => {
 
                 {/* Mobile Navigation Dots */}
                 {activeEvents.length > 1 && (
-                    <div className="flex justify-center gap-1.5 mt-3 sm:hidden">
+                    <div className="flex justify-center gap-1.5 mt-4 sm:hidden">
                         {activeEvents.map((_, idx) => (
                             <div
                                 key={idx}
