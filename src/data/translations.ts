@@ -93,7 +93,7 @@ export const translations = {
     },
     mr: {
         header: {
-            title: "ग्राम पंचायत गोळेगाव",
+            title: "गोळेगाव ग्रामपंचायत",
             subtitle: "",
             nav: {
                 home: "मुख्य पृष्ठ",
