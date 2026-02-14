@@ -60,7 +60,7 @@ const VillageSection = () => {
   }, [isLightboxOpen, selectedImage, images.length]);
 
   return (
-    <section id="about" className="py-10 md:py-24 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
+    <section id="village" className="py-10 md:py-24 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
       <VillageBackground />
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}

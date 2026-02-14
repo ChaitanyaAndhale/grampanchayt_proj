@@ -36,7 +36,7 @@ const Header = () => {
   const navLinks = [
     { name: t.header.nav.home, href: "#home" },
     { name: t.header.nav.about, href: "#village" },
-    { name: t.header.nav.services, href: "#gram-sabha" },
+    { name: t.header.nav.services, href: "#services" },
     { name: t.header.nav.contact, href: "#contact" },
   ];
 

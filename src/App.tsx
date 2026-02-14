@@ -23,6 +23,7 @@ const SuccessStoriesDiagnostic = lazy(() => import("./pages/admin/SuccessStories
 const AwardsManager = lazy(() => import("./pages/admin/AwardsManager"));
 const AnnouncementsManager = lazy(() => import("./pages/admin/AnnouncementsManager"));
 const SettingsManager = lazy(() => import("./pages/admin/SettingsManager"));
+const GramSabhaRecords = lazy(() => import("./pages/GramSabhaRecords"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/diagnostic" element={<Diagnostic />} />
+              <Route path="/gram-sabha" element={<GramSabhaRecords />} />
 
               {/* Admin Routes */}
               <Route path="/admin" element={<ProtectedRoute />}>

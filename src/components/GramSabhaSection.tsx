@@ -344,13 +344,15 @@ const GramSabhaSection = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <Button
-            variant="outline"
-            size="lg"
-            className="hover:bg-accent hover:text-white transition-all duration-300"
-          >
-            {t.gramSabha.viewAll}
-          </Button>
+          <a href="/gram-sabha">
+            <Button
+              variant="outline"
+              size="lg"
+              className="hover:bg-accent hover:text-white transition-all duration-300"
+            >
+              {t.gramSabha.viewAll}
+            </Button>
+          </a>
         </div>
       </div>
     </section >

@@ -10,6 +10,7 @@ export interface PublicMeeting {
   agenda: string;
   present_count: number;
   absent_count: number;
+  file_url?: string;
 }
 
 export const useGramSabha = () => {
@@ -23,7 +24,7 @@ export const useGramSabha = () => {
     try {
       const { data: rows, error } = await supabase
         .from('gram_sabha_meetings')
-        .select('id, year, meeting_number, meeting_date, agenda, present_count, absent_count')
+        .select('id, year, meeting_number, meeting_date, agenda, present_count, absent_count, file_url')
         .order('year', { ascending: false })
         .order('meeting_date', { ascending: false });
 

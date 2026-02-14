@@ -2,8 +2,10 @@ import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import LeadersCarousel from "../components/LeadersCarousel";
 import Hero from "../components/Hero";
+import MissionVision from "../components/MissionVision";
 import UpcomingEventSection from "../components/UpcomingEventSection";
 import VillageSection from "../components/VillageSection";
+import ServicesSection from "../components/ServicesSection";
 import GoogleEarthSection from "../components/GoogleEarthSection";
 import GramSabhaSection from "../components/GramSabhaSection";
 import VideosSection from "../components/VideosSection";
@@ -22,6 +24,7 @@ const Index = () => {
         <LeadersCarousel />
       </div>
       <Hero />
+      <MissionVision />
 
       {/* Upcoming Events - Priority Announcement */}
       <UpcomingEventSection />
@@ -36,6 +39,8 @@ const Index = () => {
       </div>
 
       <VillageSection />
+
+      <ServicesSection />
 
       {/* Google Earth Integration */}
       <GoogleEarthSection />
