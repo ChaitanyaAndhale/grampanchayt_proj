@@ -21,6 +21,7 @@ const GramSabhaManager = () => {
         absent_count: 0,
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [file, setFile] = useState<File | null>(null);
 
     const handleOpen = (meeting?: PublicMeeting) => {
         if (meeting) {
@@ -33,7 +34,9 @@ const GramSabhaManager = () => {
                 agenda: meeting.agenda,
                 present_count: meeting.present_count,
                 absent_count: meeting.absent_count,
+                file_url: meeting.file_url,
             });
+            setFile(null);
         } else {
             setIsEditing(false);
             setCurrentId(null);
@@ -44,25 +47,58 @@ const GramSabhaManager = () => {
                 agenda: "",
                 present_count: 0,
                 absent_count: 0,
+                file_url: "",
             });
+            setFile(null);
         }
         setIsOpen(true);
+    };
+
+    const uploadFile = async (file: File) => {
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `${fileName}`;
+
+        const { error: uploadError } = await import("@/lib/supabaseClient").then(m => m.supabase.storage
+            .from('documents')
+            .upload(filePath, file));
+
+        if (uploadError) throw uploadError;
+
+        const { data } = await import("@/lib/supabaseClient").then(m => m.supabase.storage
+            .from('documents')
+            .getPublicUrl(filePath));
+
+        return data.publicUrl;
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        let success = false;
-        if (isEditing && currentId) {
-            success = await updateMeeting(currentId, formData);
-        } else {
-            success = await addMeeting(formData as Omit<PublicMeeting, "id">);
-        }
+        try {
+            let fileUrl = formData.file_url;
 
-        setIsSubmitting(false);
-        if (success) {
-            setIsOpen(false);
+            if (file) {
+                fileUrl = await uploadFile(file);
+            }
+
+            const dataToSave = { ...formData, file_url: fileUrl };
+
+            let success = false;
+            if (isEditing && currentId) {
+                success = await updateMeeting(currentId, dataToSave);
+            } else {
+                success = await addMeeting(dataToSave as Omit<PublicMeeting, "id">);
+            }
+
+            if (success) {
+                setIsOpen(false);
+            }
+        } catch (error) {
+            console.error("Error processing form:", error);
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -117,6 +153,21 @@ const GramSabhaManager = () => {
                                 onChange={(e) => setFormData({ ...formData, agenda: e.target.value })}
                                 required
                             />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium">Meeting Minutes (PDF)</label>
+                            <div className="flex flex-col gap-2">
+                                <Input
+                                    type="file"
+                                    accept=".pdf"
+                                    onChange={(e) => setFile(e.target.files?.[0] || null)}
+                                />
+                                {formData.file_url && (
+                                    <p className="text-xs text-green-600 truncate">
+                                        Current file: <a href={formData.file_url} target="_blank" rel="noreferrer" className="underline">View PDF</a>
+                                    </p>
+                                )}
+                            </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
