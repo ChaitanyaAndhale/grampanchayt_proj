@@ -43,8 +43,6 @@ export const useVideos = () => {
 
     const addVideo = async (youtube_url: string, title: string, description?: string) => {
         try {
-            console.log('🎬 Attempting to add video:', { youtube_url, title, description });
-
             const { data, error } = await supabase
                 .from('videos')
                 .insert([{ youtube_url, title, description, display_order: videos.length }])
@@ -57,7 +55,6 @@ export const useVideos = () => {
                 throw error;
             }
 
-            console.log('✅ Video added successfully:', data);
             toast.success('Video added successfully');
             fetchVideos();
             return true;

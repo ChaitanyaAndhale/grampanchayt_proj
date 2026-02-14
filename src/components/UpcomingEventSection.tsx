@@ -44,7 +44,7 @@ const UpcomingEventSection = () => {
             audioRef.current.volume = 0.5;
         }
         audioRef.current.currentTime = 0;
-        audioRef.current.play().catch(e => console.log("Audio play failed interaction required", e));
+        audioRef.current.play().catch(e => console.warn("Audio play failed interaction required", e));
     };
 
     const nextSlide = (e?: React.MouseEvent) => {

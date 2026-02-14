@@ -44,8 +44,6 @@ export const useSuccessStories = () => {
 
     const updateStory = async (id: string, updates: Partial<SuccessStory>) => {
         try {
-            console.log('📝 Updating success story:', { id, updates });
-
             const { error } = await supabase
                 .from('success_stories')
                 .update({ ...updates, updated_at: new Date().toISOString() })
@@ -56,7 +54,6 @@ export const useSuccessStories = () => {
                 throw error;
             }
 
-            console.log('✅ Story updated successfully');
             toast.success('यश कहाणी अपडेट झाली');
             fetchStories();
             return true;

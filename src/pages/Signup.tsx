@@ -29,7 +29,6 @@ const Signup = () => {
 
             if (data.user) {
                 toast.success("Account created successfully! Please check your email to confirm.");
-                console.log("User created:", data.user);
                 // Navigate to login after 2 seconds
                 setTimeout(() => navigate("/login"), 2000);
             }

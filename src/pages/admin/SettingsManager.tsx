@@ -45,6 +45,16 @@ const SettingsManager = () => {
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
+                            <label className="text-sm font-medium">Families</label>
+                            <div className="flex gap-2">
+                                <Input
+                                    value={formData.families || ""}
+                                    onChange={(e) => handleChange("families", e.target.value)}
+                                />
+                                <Button onClick={() => handleSave("families")} disabled={isSubmitting}>Save</Button>
+                            </div>
+                        </div>
+                        <div className="space-y-2">
                             <label className="text-sm font-medium">Population</label>
                             <div className="flex gap-2">
                                 <Input
