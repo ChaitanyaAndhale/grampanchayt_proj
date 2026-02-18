@@ -95,7 +95,7 @@ The platform also includes a secure Admin Panel for managing all dynamic content
 > Replace these placeholders with real screenshots
 
 ```md
-![Homepage Screenshot](./screenshots/homepage.png)
+![Homepage Screenshot](./"C:\Users\91703\OneDrive\Pictures\Screenshots\Screenshot 2026-02-19 003300.png")
 ![Admin Dashboard](./screenshots/admin-dashboard.png)
 ![Members Section](./screenshots/members.png)
 ![Mobile View](./screenshots/mobile.png)
